@@ -1,0 +1,25 @@
+{
+  "name": "nuf",
+  "displayName": "nuf",
+  "description": "Language support for `.nuf` files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "nuf",
+      "aliases": ["Nuf", "nuf"],
+      "extensions": [".nuf"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "nuf",
+      "scopeName": "source.nuf",
+      "path": "./syntaxes/nuf.tmLanguage.json"
+    }]
+  }
+}

@@ -1,0 +1,53 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "nuf",
+	"patterns": [
+		{
+			"include": "#expression"
+		},
+		{
+			"include": "#delimiter-semi"
+		}
+	],
+	"repository": {
+		"expression": {
+			"patterns": [
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#function-call"
+				}
+			]
+		},
+		"string": {
+			"name": "string.quoted.double.nuf",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.nuf",
+					"match": "\\\\."
+				}
+			]
+		},
+		"function-call": {
+			"name": "expression.group",
+			"begin": "[a-z_][a-z_]*(\\()",
+			"end": "\\)",
+			"patterns": [{ "include": "#string" }],
+			"beginCaptures": {
+				"0": { "name": "entity.name.function" },
+				"1": { "name": "punctuation.paren.open" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close" }
+			}
+		},
+		"delimiter-semi": {
+			"name": "punctuation.semi",
+			"match": ";"
+		}
+	},
+	"scopeName": "source.nuf"
+}
